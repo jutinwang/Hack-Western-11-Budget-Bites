@@ -11,6 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { CookingPot } from "lucide-react";
+import { GeometricBackground } from "../shared/GeometricBackground";
 
 const mealTypes = [
   { value: "breakfast", label: "🌅 Breakfast" },
@@ -33,59 +34,9 @@ export default function BudgetLanding() {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-[#45bed4] flex items-center justify-center p-4">
-      {/* Geometric Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Base Layer - Large Shapes */}
-        <div className="absolute w-[120%] h-[120%] -top-[10%] -left-[10%] bg-[#2a9b75] rotate-12 transform-gpu rounded-[100px] opacity-70 blur-3xl" />
-        <div className="absolute w-[120%] h-[120%] -bottom-[10%] -right-[10%] bg-[#df591f] -rotate-12 transform-gpu rounded-[100px] opacity-60 blur-3xl" />
+    <div className="min-h-screen relative overflow-hidden flex items-center justify-center p-4">
+      <GeometricBackground />
 
-        {/* Middle Layer - Geometric Patterns */}
-        <div className="absolute inset-0">
-          {/* Hexagonal Grid Pattern */}
-          <div className="absolute top-0 left-0 w-full h-full opacity-10">
-            <div
-              className="absolute w-48 h-48 bg-white/20 rotate-45 transform-gpu"
-              style={{
-                clipPath:
-                  "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)",
-              }}
-            />
-            <div
-              className="absolute w-48 h-48 bg-white/20 rotate-45 transform-gpu left-48"
-              style={{
-                clipPath:
-                  "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)",
-              }}
-            />
-            <div
-              className="absolute w-48 h-48 bg-white/20 rotate-45 transform-gpu top-48"
-              style={{
-                clipPath:
-                  "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)",
-              }}
-            />
-          </div>
-
-          {/* Floating Geometric Elements */}
-          <div className="absolute w-64 h-64 bg-[#45bed4]/40 rounded-3xl rotate-12 blur-xl animate-float-slow top-1/4 left-1/4 transform-gpu" />
-          <div className="absolute w-72 h-72 bg-[#2a9b75]/40 rounded-3xl -rotate-12 blur-xl animate-float-medium bottom-1/4 right-1/4 transform-gpu" />
-          <div className="absolute w-56 h-56 bg-[#df591f]/40 rounded-3xl rotate-45 blur-xl animate-float-fast top-1/3 right-1/3 transform-gpu" />
-        </div>
-
-        {/* Top Layer - Sharp Geometric Accents */}
-        <div className="absolute inset-0">
-          <div className="absolute w-32 h-32 border-4 border-white/10 rotate-45 top-20 left-20 transform-gpu" />
-          <div className="absolute w-24 h-24 border-4 border-white/10 rotate-12 bottom-40 right-40 transform-gpu" />
-          <div className="absolute w-40 h-40 border-4 border-white/10 -rotate-12 top-1/2 left-1/3 transform-gpu" />
-        </div>
-
-        {/* Overlay Gradients for Depth */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent" />
-      </div>
-
-      {/* Main Content */}
       <Card className="w-full max-w-[768px] p-12 space-y-10 bg-white/95 backdrop-blur-xl border-2 shadow-2xl relative z-10 hover:shadow-3xl transition-all duration-300">
         <div className="space-y-2 text-center">
           <div className="flex justify-center mb-6">

@@ -1,10 +1,10 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
 import { Card } from "@/components/ui/card";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { DollarSign, Users, Clock, MapPin, ChefHat } from "lucide-react";
+import { GeometricBackground } from "../shared/GeometricBackground";
 
 interface Recipe {
   id: string;
@@ -26,7 +26,6 @@ interface Recipe {
 }
 
 const mockRecipes: Recipe[] = [
-  // Quick & Easy Category
   {
     id: "1",
     title: "15-Minute Stir-Fry Noodles",
@@ -91,7 +90,38 @@ const mockRecipes: Recipe[] = [
       },
     ],
   },
-  // Add more recipes...
+  {
+    id: "3",
+    title: "Simple Chicken Rice Bowl",
+    category: "protein",
+    dietaryTypes: ["gluten-free"],
+    totalCost: 16.99,
+    servings: 4,
+    cookTime: "25 mins",
+    ingredients: [
+      {
+        name: "Chicken Breast",
+        amount: "1.5 lbs",
+        price: 8.99,
+        store: "MeatMarket",
+        distance: 1.0,
+      },
+      {
+        name: "Brown Rice",
+        amount: "2 cups",
+        price: 3.99,
+        store: "GroceryMart",
+        distance: 0.5,
+      },
+      {
+        name: "Mixed Vegetables",
+        amount: "2 cups",
+        price: 4.99,
+        store: "FreshMarket",
+        distance: 0.8,
+      },
+    ],
+  },
 ];
 
 export default function RecipeResults() {
@@ -106,7 +136,9 @@ export default function RecipeResults() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#45bed4] via-[#2a9b75] to-[#df591f]/40">
+    <div className="min-h-screen relative overflow-hidden">
+      <GeometricBackground />
+
       <header className="bg-background/80 backdrop-blur-sm border-b sticky top-0 z-50">
         <div className="container mx-auto py-4">
           <div className="flex items-center justify-between">
@@ -128,152 +160,133 @@ export default function RecipeResults() {
         </div>
       </header>
 
-      <main className="container mx-auto py-8">
+      <main className="container max-w-3xl mx-auto py-8 px-4">
         <div className="space-y-8">
-          {/* Steps 1-2 would go here */}
+          <div className="space-y-2 text-center">
+            <h2 className="text-xl font-semibold text-white">
+              3. Browse Recipes
+            </h2>
+            <p className="text-white/80">
+              Recipes are sorted from cheapest to most expensive, all within
+              your budget
+            </p>
+          </div>
+
+          <div className="flex justify-center gap-4 overflow-x-auto pb-4">
+            {["All", "Quick", "Protein", "Vegetarian", "Global", "Comfort"].map(
+              (category) => (
+                <Button
+                  key={category}
+                  variant={
+                    selectedCategory === category.toLowerCase()
+                      ? "default"
+                      : "outline"
+                  }
+                  onClick={() => setSelectedCategory(category.toLowerCase())}
+                  className="min-w-[100px]"
+                >
+                  {category}
+                </Button>
+              ),
+            )}
+          </div>
 
           <div className="space-y-6">
-            <div className="space-y-2">
-              <h2 className="text-xl font-semibold text-white">
-                3. Browse Recipes
-              </h2>
-              <p className="text-white/80">
-                Recipes are sorted from cheapest to most expensive, all within
-                your budget
-              </p>
-            </div>
+            {sortedRecipes
+              .filter((recipe) =>
+                selectedCategory === "all"
+                  ? true
+                  : recipe.category === selectedCategory,
+              )
+              .map((recipe) => (
+                <Card
+                  key={recipe.id}
+                  className="p-6 hover:shadow-lg transition-shadow bg-white/95 backdrop-blur-xl"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h3 className="text-xl font-semibold">
+                          {recipe.title}
+                        </h3>
+                        <div className="flex gap-2 mt-1">
+                          {recipe.dietaryTypes.map((type) => (
+                            <Badge
+                              key={type}
+                              variant="outline"
+                              className="text-xs"
+                            >
+                              {type}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                      <Badge className="text-lg bg-primary">
+                        ${recipe.totalCost.toFixed(2)}
+                      </Badge>
+                    </div>
 
-            <Card className="p-6">
-              <div className="space-y-6">
-                <div className="flex gap-4 overflow-x-auto pb-4">
-                  {[
-                    "All",
-                    "Quick",
-                    "Protein",
-                    "Vegetarian",
-                    "Global",
-                    "Comfort",
-                  ].map((category) => (
-                    <Button
-                      key={category}
-                      variant={
-                        selectedCategory === category.toLowerCase()
-                          ? "default"
-                          : "outline"
-                      }
-                      onClick={() =>
-                        setSelectedCategory(category.toLowerCase())
-                      }
-                      className="min-w-[100px]"
-                    >
-                      {category}
-                    </Button>
-                  ))}
-                </div>
+                    <div className="flex items-center gap-4 text-muted-foreground">
+                      <div className="flex items-center gap-1">
+                        <Users className="h-4 w-4" />
+                        Serves {recipe.servings}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="h-4 w-4" />
+                        {recipe.cookTime}
+                      </div>
+                    </div>
 
-                <ScrollArea className="h-[600px]">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {sortedRecipes
-                      .filter((recipe) =>
-                        selectedCategory === "all"
-                          ? true
-                          : recipe.category === selectedCategory,
-                      )
-                      .map((recipe) => (
-                        <Card
-                          key={recipe.id}
-                          className="p-6 hover:shadow-lg transition-shadow"
-                        >
-                          <div className="space-y-4">
-                            <div className="flex items-center justify-between">
-                              <div>
-                                <h3 className="text-xl font-semibold">
-                                  {recipe.title}
-                                </h3>
-                                <div className="flex gap-2 mt-1">
-                                  {recipe.dietaryTypes.map((type) => (
-                                    <Badge
-                                      key={type}
-                                      variant="outline"
-                                      className="text-xs"
-                                    >
-                                      {type}
-                                    </Badge>
-                                  ))}
+                    <div className="space-y-2">
+                      <h4 className="font-medium">Ingredients & Stores:</h4>
+                      <div className="grid gap-2">
+                        {recipe.ingredients.map((ingredient, index) => (
+                          <div
+                            key={index}
+                            className="flex items-center justify-between p-2 rounded-md bg-accent/10"
+                          >
+                            <div className="space-y-1">
+                              <div className="font-medium">
+                                {ingredient.name}
+                              </div>
+                              <div className="text-sm text-muted-foreground">
+                                {ingredient.amount}
+                              </div>
+                            </div>
+
+                            <div className="flex items-center gap-4">
+                              <div className="text-right">
+                                <div className="font-medium">
+                                  ${ingredient.price.toFixed(2)}
+                                </div>
+                                <div className="text-sm text-muted-foreground">
+                                  {ingredient.store}
                                 </div>
                               </div>
-                              <Badge className="text-lg bg-primary">
-                                ${recipe.totalCost.toFixed(2)}
-                              </Badge>
-                            </div>
-
-                            <div className="flex items-center gap-4 text-muted-foreground">
-                              <div className="flex items-center gap-1">
-                                <Users className="h-4 w-4" />
-                                Serves {recipe.servings}
-                              </div>
-                              <div className="flex items-center gap-1">
-                                <Clock className="h-4 w-4" />
-                                {recipe.cookTime}
-                              </div>
-                            </div>
-
-                            <div className="space-y-2">
-                              <h4 className="font-medium">
-                                Ingredients & Stores:
-                              </h4>
-                              <div className="grid gap-2">
-                                {recipe.ingredients.map((ingredient, index) => (
-                                  <div
-                                    key={index}
-                                    className="flex items-center justify-between p-2 rounded-md bg-accent/10"
-                                  >
-                                    <div className="space-y-1">
-                                      <div className="font-medium">
-                                        {ingredient.name}
-                                      </div>
-                                      <div className="text-sm text-muted-foreground">
-                                        {ingredient.amount}
-                                      </div>
-                                    </div>
-
-                                    <div className="flex items-center gap-4">
-                                      <div className="text-right">
-                                        <div className="font-medium">
-                                          ${ingredient.price.toFixed(2)}
-                                        </div>
-                                        <div className="text-sm text-muted-foreground">
-                                          {ingredient.store}
-                                        </div>
-                                      </div>
-                                      <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                                        <MapPin className="h-4 w-4" />
-                                        {ingredient.distance} mi
-                                      </div>
-                                    </div>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-
-                            <div className="pt-4 border-t">
-                              <div className="flex items-center justify-between text-lg">
-                                <div className="flex items-center gap-2">
-                                  <DollarSign className="h-5 w-5 text-primary" />
-                                  <span>Total Cost</span>
-                                </div>
-                                <span className="font-bold text-primary">
-                                  ${recipe.totalCost.toFixed(2)}
-                                </span>
+                              <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                                <MapPin className="h-4 w-4" />
+                                {ingredient.distance} mi
                               </div>
                             </div>
                           </div>
-                        </Card>
-                      ))}
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="pt-4 border-t">
+                      <div className="flex items-center justify-between text-lg">
+                        <div className="flex items-center gap-2">
+                          <DollarSign className="h-5 w-5 text-primary" />
+                          <span>Total Cost</span>
+                        </div>
+                        <span className="font-bold text-primary">
+                          ${recipe.totalCost.toFixed(2)}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                </ScrollArea>
-              </div>
-            </Card>
+                </Card>
+              ))}
           </div>
         </div>
       </main>
