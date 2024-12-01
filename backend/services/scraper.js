@@ -40,6 +40,7 @@ async function scrapeWebsite(company, searchTerm) {
         products.push({
           name: element.innerText || '',
           price: priceElements[index] ? priceElements[index].innerText : '',
+          company: stores[company]
         });
       });
 
