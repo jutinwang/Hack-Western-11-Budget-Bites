@@ -43,7 +43,7 @@ export default function BudgetLanding() {
             <div className="relative w-20 h-20">
               <div className="absolute inset-0 bg-gradient-to-br from-[#df591f] to-[#45bed4] opacity-20 rounded-full blur-xl animate-pulse" />
               <img
-                src="/logo.png"
+                src="public/BB_logo.png"
                 alt="Budget Bites"
                 className="relative w-full h-full object-contain"
               />
