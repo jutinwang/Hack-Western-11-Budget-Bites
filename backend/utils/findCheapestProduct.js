@@ -1,16 +1,16 @@
-function findTopCheapestProducts(products, topN = 5) {
-  const validProducts = products
-    .filter(product => product.price && product.price.includes('$'))
-    .map(product => {
-      return {
-        ...product,
-        numericPrice: parseFloat(product.price.replace(/[^0-9.]/g, '')),
-      };
-    })
-    .filter(product => !isNaN(product.numericPrice)); // Ensure valid numeric price
+function findCheapestProduct(products) {
+  if (!products.length) {
+    return null;
+  }
 
-  validProducts.sort((a, b) => a.numericPrice - b.numericPrice);
+  return products.reduce((cheapest, product) => {
+    const normalizedPrice = parseFloat(product.price.replace(/[^0-9.]/g, ''));
 
-  return validProducts.slice(0, topN).map(({ numericPrice, ...rest }) => rest);
+    const cheapestPrice = parseFloat(cheapest.price.replace(/[^0-9.]/g, ''));
+
+    return normalizedPrice < cheapestPrice ? product : cheapest;
+  });
 }
 
+
+module.exports = findCheapestProduct;

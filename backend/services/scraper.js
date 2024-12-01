@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
 const stores = require('./URLs/url');
+
 async function scrapeWebsite(company, searchTerm) {
   try {
     const browser = await puppeteer.launch({
@@ -23,17 +24,15 @@ async function scrapeWebsite(company, searchTerm) {
       timeout: 30000
     });
 
-    // Wait for product elements to load
     const nameSelector = stores[company].selectors.name;
     const priceSelector = stores[company].selectors.price;
 
-    await page.waitForSelector(nameSelector, { timeout: 10000 });
+    await page.waitForSelector(nameSelector, { timeout: 100000 });
 
-    // Pass selectors into evaluate function
     const content = await page.evaluate((nameSelector, priceSelector) => {
       const products = [];
-      const productElements = document.querySelectorAll(nameSelector);
-      const priceElements = document.querySelectorAll(priceSelector);
+      const productElements = Array.from(document.querySelectorAll(nameSelector)).slice(0, 5);
+      const priceElements = Array.from(document.querySelectorAll(priceSelector)).slice(0, 5);
 
       productElements.forEach((element, index) => {
         products.push({
@@ -67,7 +66,6 @@ async function main() {
   }
 }
 
-// For testing directly
 if (require.main === module) {
   main();
 }
