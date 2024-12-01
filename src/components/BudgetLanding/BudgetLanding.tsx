@@ -17,19 +17,20 @@ const mealTypes = [
   { value: "breakfast", label: "🌅 Breakfast" },
   { value: "lunch", label: "🌞 Lunch" },
   { value: "dinner", label: "🌙 Dinner" },
+  { value: "snack", label: "🌙 Snack" },
 ];
 
 export default function BudgetLanding() {
   const navigate = useNavigate();
   const [budget, setBudget] = React.useState("");
-  const [mealType, setMealType] = React.useState("");
+  const [mealCategory, setMealCategory] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setTimeout(() => {
-      navigate(`/recipes?budget=${budget}&type=${mealType}`);
+      navigate(`/recipes?budget=${budget}&category=${mealCategory}`);
     }, 1500);
   };
 
@@ -84,7 +85,11 @@ export default function BudgetLanding() {
                 </span>
                 Choose Meal Time
               </h2>
-              <Select value={mealType} onValueChange={setMealType} required>
+              <Select
+                value={mealCategory}
+                onValueChange={setMealCategory}
+                required
+              >
                 <SelectTrigger className="text-lg shadow-sm hover:shadow-md transition-shadow">
                   <SelectValue placeholder="Select meal time" />
                 </SelectTrigger>
@@ -106,7 +111,7 @@ export default function BudgetLanding() {
           <Button
             type="submit"
             className="w-full text-lg h-12 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-[#df591f] to-[#45bed4] hover:scale-[1.02]"
-            disabled={!budget || !mealType || isLoading}
+            disabled={!budget || !mealCategory || isLoading}
           >
             {isLoading ? (
               <>
