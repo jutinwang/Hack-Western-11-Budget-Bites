@@ -1,0 +1,262 @@
+[
+    {
+      "name": "Oatmeal Bowl",
+      "category": "breakfast",
+      "price_range": 8.50,
+      "ingredients": [
+        "oats",
+        "milk",
+        "honey",
+        "banana",
+        "almonds",
+        "cinnamon"
+      ]
+    },
+    {
+      "name": "Avocado Toast",
+      "category": "breakfast",
+      "price_range": 10.50,
+      "ingredients": [
+        "bread",
+        "avocado",
+        "eggs",
+        "tomato",
+        "salt",
+        "pepper"
+      ]
+    },
+    {
+      "name": "Pancakes",
+      "category": "breakfast",
+      "price_range": 9.50,
+      "ingredients": [
+        "flour",
+        "milk",
+        "eggs",
+        "butter",
+        "maple",
+        "blueberries"
+      ]
+    },
+    {
+      "name": "Breakfast Burrito",
+      "category": "breakfast",
+      "price_range": 11.00,
+      "ingredients": [
+        "tortilla",
+        "eggs",
+        "cheese",
+        "beans",
+        "salsa",
+        "avocado"
+      ]
+    },
+    {
+      "name": "Yogurt Parfait",
+      "category": "breakfast",
+      "price_range": 7.50,
+      "ingredients": [
+        "yogurt",
+        "granola",
+        "honey",
+        "strawberries",
+        "blueberries",
+        "almonds"
+      ]
+    },
+    {
+      "name": "Caesar Salad",
+      "category": "lunch",
+      "price_range": 12.00,
+      "ingredients": [
+        "lettuce",
+        "chicken",
+        "croutons",
+        "parmesan",
+        "caesar",
+        "bacon"
+      ]
+    },
+    {
+      "name": "Turkey Sandwich",
+      "category": "lunch",
+      "price_range": 9.50,
+      "ingredients": [
+        "bread",
+        "turkey",
+        "lettuce",
+        "tomato",
+        "mayo",
+        "cheese"
+      ]
+    },
+    {
+      "name": "Quinoa Bowl",
+      "category": "lunch",
+      "price_range": 13.50,
+      "ingredients": [
+        "quinoa",
+        "chickpeas",
+        "cucumber",
+        "tomato",
+        "feta",
+        "olives"
+      ]
+    },
+    {
+      "name": "Ramen",
+      "category": "lunch",
+      "price_range": 14.00,
+      "ingredients": [
+        "noodles",
+        "broth",
+        "egg",
+        "pork",
+        "seaweed",
+        "scallions"
+      ]
+    },
+    {
+      "name": "Poke Bowl",
+      "category": "lunch",
+      "price_range": 15.50,
+      "ingredients": [
+        "rice",
+        "tuna",
+        "cucumber",
+        "avocado",
+        "seaweed",
+        "soy"
+      ]
+    },
+    {
+      "name": "Grilled Salmon",
+      "category": "dinner",
+      "price_range": 24.50,
+      "ingredients": [
+        "salmon",
+        "rice",
+        "asparagus",
+        "lemon",
+        "butter",
+        "garlic"
+      ]
+    },
+    {
+      "name": "Steak Frites",
+      "category": "dinner",
+      "price_range": 28.00,
+      "ingredients": [
+        "steak",
+        "potatoes",
+        "butter",
+        "garlic",
+        "herbs",
+        "salt"
+      ]
+    },
+    {
+      "name": "Chicken Curry",
+      "category": "dinner",
+      "price_range": 18.50,
+      "ingredients": [
+        "chicken",
+        "rice",
+        "coconut",
+        "curry",
+        "onion",
+        "garlic"
+      ]
+    },
+    {
+      "name": "Pasta Primavera",
+      "category": "dinner",
+      "price_range": 16.50,
+      "ingredients": [
+        "pasta",
+        "broccoli",
+        "carrots",
+        "peas",
+        "cream",
+        "parmesan"
+      ]
+    },
+    {
+      "name": "Pizza Margherita",
+      "category": "dinner",
+      "price_range": 17.00,
+      "ingredients": [
+        "dough",
+        "tomato",
+        "mozzarella",
+        "basil",
+        "olive",
+        "garlic"
+      ]
+    },
+    {
+      "name": "Trail Mix",
+      "category": "snack",
+      "price_range": 5.50,
+      "ingredients": [
+        "almonds",
+        "raisins",
+        "cashews",
+        "cranberries",
+        "chocolate",
+        "peanuts"
+      ]
+    },
+    {
+      "name": "Fruit Plate",
+      "category": "snack",
+      "price_range": 7.00,
+      "ingredients": [
+        "apple",
+        "orange",
+        "grapes",
+        "strawberries",
+        "pineapple",
+        "melon"
+      ]
+    },
+    {
+      "name": "Hummus Platter",
+      "category": "snack",
+      "price_range": 8.50,
+      "ingredients": [
+        "hummus",
+        "pita",
+        "carrots",
+        "celery",
+        "cucumber",
+        "olives"
+      ]
+    },
+    {
+      "name": "Cheese Board",
+      "category": "snack",
+      "price_range": 16.50,
+      "ingredients": [
+        "cheddar",
+        "brie",
+        "grapes",
+        "crackers",
+        "honey",
+        "nuts"
+      ]
+    },
+    {
+      "name": "Popcorn Mix",
+      "category": "snack",
+      "price_range": 4.50,
+      "ingredients": [
+        "popcorn",
+        "butter",
+        "salt",
+        "chocolate",
+        "nuts",
+        "caramel"
+      ]
+    }
+  ]
