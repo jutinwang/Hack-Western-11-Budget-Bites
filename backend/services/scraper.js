@@ -58,7 +58,9 @@ async function scrapeWebsite(company, searchTerm) {
 async function main() {
   try {
     const data = await scrapeWebsite('nofrills', 'milk');
+    const data1 = await scrapeWebsite('walmart', 'milk');
     console.log('Scraped Products:', data);
+    console.log('Scraped Products:', data1);
     return data;
   } catch (error) {
     console.error('Scraping failed:', error);
