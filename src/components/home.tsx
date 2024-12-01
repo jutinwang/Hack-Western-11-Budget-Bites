@@ -28,7 +28,7 @@ function Home() {
       <header className="bg-background/80 backdrop-blur-sm border-b sticky top-0 z-50">
         <div className="container mx-auto py-4 px-4">
           <div className="flex items-center">
-            <img src="/logo.png" alt="Budget Bites Logo" className="logo" />
+            <img src="/BB_logo.png" alt="Budget Bites Logo" className="logo" />
             <h1 className="text-4xl font-bold tracking-tight gradient-text">
               Budget Bites
             </h1>
