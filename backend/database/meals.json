@@ -1,5 +1,4 @@
-{
-  "meals": [
+[
     {
       "name": "Oatmeal Bowl",
       "category": "breakfast",
@@ -261,4 +260,3 @@
       ]
     }
   ]
-}

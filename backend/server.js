@@ -19,16 +19,13 @@ app.use(cors()) // Enable cross-platform data exchange
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 
-// const orderRoutes = require('./router/order');
-// const menuItemsRoutes = require('./router/menu_items');
-// const cartRoutes = require('./router/cart');
-// const index = require('./router/index');
+
+const index = require('./router/index');
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 
-// app.use('/api', index);
-// app.use('/cart', cartRoutes)
+app.use('/api', index);
 // Note: mount other resources here, using the same pattern above
 
 // Home page

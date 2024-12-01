@@ -1,6 +1,5 @@
-const stores = require('./URLs/url');
 const puppeteer = require('puppeteer');
-
+const stores = require('./URLs/url');
 async function scrapeWebsite(company, searchTerm) {
   try {
     const browser = await puppeteer.launch({
@@ -40,7 +39,7 @@ async function scrapeWebsite(company, searchTerm) {
         products.push({
           name: element.innerText || '',
           price: priceElements[index] ? priceElements[index].innerText : '',
-          company: stores[company]
+          store: window.location.hostname
         });
       });
 
